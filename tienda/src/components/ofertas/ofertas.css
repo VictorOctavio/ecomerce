@@ -1,0 +1,89 @@
+.container-ofertas{
+    margin: 100px 0;
+}
+
+.title-oferta h3{
+    color: rgb(165, 165, 165);
+    font-size: 30px;
+    margin: 0;
+    padding-bottom: 1px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    margin-bottom: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.ofertas{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+
+
+.ofertas .card{
+    padding: 0; margin: 0;
+    width: 100%;
+    transition: 1s;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+
+.ofertas .card img{
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+}
+
+.ofertas .card-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px; margin: 0;
+    border-top: 1px solid #ccc;
+}
+
+.ofertas .card-body h6{
+    color: rgb(187, 43, 43);
+    text-decoration: line-through;
+    margin: 0; padding:  0;
+    font-weight: 300;
+}
+
+.ofertas .card-body h5{
+    margin: 0; padding:  0;
+    color: rgb(101, 138, 28);
+    font-weight: 300;
+}
+
+
+.hover-active{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(315deg, #000000cc 0%, #202020 74%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: rgb(150, 150, 150);
+}
+
+
+.hover-active strong{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hover-active-border{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 99%;
+    width: 99%;
+}
+
+.hover-active p{ 
+    text-align: center;
+    text-transform: capitalize;
+}

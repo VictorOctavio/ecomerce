@@ -1,0 +1,78 @@
+.card-product{
+    transition: .3s;
+    border: none;
+    margin-bottom: 80px;
+}
+
+.card-product:hover{
+    box-shadow: -4px 20px 34px 10px rgba(24, 24, 24, 0.26);
+    transform: translateY(-15px);
+    z-index: 2;
+}
+
+.card-product .card-product-img{
+    width: 100%;
+    height: 350px;
+    display: flex;
+    margin-bottom: 5px;
+    border: none;
+}
+
+.card-product .card-product-img img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.card-product .card-product-img img:hover{
+    cursor: pointer;
+}
+
+.card-product .card-body-product{
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #d3d3d3;
+}
+
+.card-product .card-body-product strong{
+    font-weight: 300;
+}
+
+.card-product .card-body-product .precio-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.card-product .card-body-product .precio-card h6{
+    font-weight: 800;
+    color: tomato;
+    margin: 0;
+    padding-bottom: 5PX;
+}
+
+.card-product .card-body-product .precio-card p{
+    font-size: 23px;
+    font-weight: 300;
+    margin: 0;
+    color: rgb(101, 138, 28);
+}
+
+.oferta-etiqueta-card{
+    background-color: tomato;
+    position: absolute;
+    padding: 7px;
+    border-radius: 15px 0 15px 0;
+    top: 10px;
+    left: 63%;
+}
+
+.oferta-etiqueta-card svg{
+    color: white;
+    font-size: 20px;
+}
+
+.oferta-etiqueta-card bold{
+    color: white;
+    margin: 0 5px;
+}

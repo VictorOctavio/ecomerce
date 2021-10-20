@@ -1,0 +1,66 @@
+.filtros-container{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 65px;
+    height: auto;
+}
+
+.filtros-container h5{
+    font-size: 16px;
+    border-bottom: 1px solid rgb(216, 213, 213);
+    margin-bottom: 10px;
+}
+
+.filtros-container .div{
+    margin-bottom: 50px;
+}
+
+.container-marcas{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: auto;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.container-marcas .card-marcas{
+    height: 120px;
+    width: 120px;
+    border: 1px solid #ccc;
+    margin: 0 1px;
+    background: #040404;
+}
+
+
+@media (max-width: 962px){
+    .filtros-container{
+        margin-bottom: 30px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: auto;
+        overflow-y: hidden;
+        margin-top: 100px;
+    }
+
+
+    .filtros-container .div{
+        display: flex;
+        margin: 0 20px;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+    }
+
+    .filtros-container .marcas{
+        display: none;
+    }
+
+    .container-marcas{
+        display: none;
+    }
+
+    .filtros-container h5{
+        font-size: 13px;
+    }
+}

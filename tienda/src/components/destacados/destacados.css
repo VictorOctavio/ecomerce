@@ -1,0 +1,12 @@
+.container-destacados{
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.container-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0; padding: 0;
+}
+

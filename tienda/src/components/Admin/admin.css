@@ -1,0 +1,54 @@
+.opciones-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    display: flex;justify-content: center;align-items: center;   
+}
+
+.opciones-admin{
+    background-color: rgb(23, 18, 49);
+    min-height: 100vh;
+    height: auto;
+}
+
+
+.opciones-admin ul{
+   padding: 50px 0;
+}
+
+.opciones-admin ul li{
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.opciones-admin ul li:hover{
+    background-color: rgb(23, 18, 49);
+    color: #fff;
+    border: 2px solid rgb(6, 4, 17);
+}
+
+
+.opciones-container .admin-edit{
+    height: 80vh;
+}
+
+
+/**/
+form input, textarea{
+    margin-bottom: 10px;
+}
+
+form textarea{
+    max-height: 350px;
+}
+
+form button{
+    width: 100%;
+}

@@ -1,0 +1,92 @@
+.slider-contaiener{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://c.wallhere.com/photos/39/21/women_model_sports_sportwear_sneakers_Nike_sports_bra_head_band-1282109.jpg!d');
+    background-size: contain;
+    background-position:center;
+}
+
+.slider-contaiener .slider{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(000, 000, 000, .7);
+}
+
+.slider-contaiener .slider h1{
+    font-weight: 900;
+    font-size: 70px;
+    color: white;
+}
+
+.slider-contaiener .slider p{
+    font-weight: 100;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 1.5px;
+}
+
+
+.slider-contaiener .slider a{
+    border: 1px solid #fff;
+    max-width: 25%;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.slider-contaiener .slider a:hover{
+    background: white;
+    color: #000;
+}
+
+
+.icons-down{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 5rem;
+}
+
+.icons-down .arrow{
+    animation: ARROW 1s ease-in-out infinite 0.1s;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+@keyframes ARROW{
+    0%{opacity: .0; transform: translateY(0px);}
+    25%{opacity: .2;  transform: translateY(5px);}
+    35%{opacity: .35;  transform: translateY(7.5px);}
+    50%{opacity: .5;  transform: translateY(10px);}
+    75%{opacity: .65;  transform: translateY(18px);}
+    100%{opacity: .7;  transform: translateY(25px);}
+}
+
+.icons-down svg{
+    color: white;
+    font-size: 50px;
+}
+
+@media (max-width: 1300px) {
+    .slider-contaiener{
+        background-size: cover;
+    }
+}
+
+@media (max-width: 700px) {
+    .slider-contaiener .slider h1{
+        font-size: 40px;
+    }
+
+    .slider-contaiener .slider p{
+        font-size: 15px;
+    }
+
+    .slider-contaiener .slider button{
+        max-width: 50%;
+    }
+}
