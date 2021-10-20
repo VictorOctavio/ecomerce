@@ -142,3 +142,9 @@
     }
 
 }
+
+@media (max-width: 600px) {
+    .informacion-producto h3{
+        font-size: 25px;
+    }
+}

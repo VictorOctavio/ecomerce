@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, { useContext, useEffect } from 'react';
 import ProductoContext from '../context/Producto/productoContext';
 
 //Components
@@ -7,21 +7,21 @@ import Footer from '../components/footer/footer';
 import Producto from '../components/Producto/Producto';
 
 const ProductoPage = () => {
-    
-    const {getProducts,products} = useContext(ProductoContext);
-    
+
+    const { getProducts, products } = useContext(ProductoContext);
+
     useEffect(() => {
         getProducts();
     }, []);
 
-    return(
-       <React.Fragment>
-           <Navbar/>
-           <Producto
-            products={products}
-           />
-           <Footer/>
-       </React.Fragment>
+    return (
+        <React.Fragment>
+            <Navbar />
+            <Producto
+                products={products}
+            />
+            <Footer />
+        </React.Fragment>
     )
 }
 

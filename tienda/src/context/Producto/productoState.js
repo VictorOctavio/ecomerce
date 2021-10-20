@@ -39,6 +39,8 @@ const ProductoState = (props) => {
         try {
 
             const res = await axios.get(`http://localhost:8080/api/product/${id}`);
+            
+            console.log(res);
             dispath({
                 type: 'GET_PRODUCT',
                 payload: res.data

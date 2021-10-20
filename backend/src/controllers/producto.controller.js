@@ -81,7 +81,16 @@ const controller = {
         try{
             const product = await Product.findOne({_id: req.params.id});
             if(!product) return res.json({err: true, data: null, message: 'No se ha podido encontrar el producto solicitado'});
-            return res.json({err: null, data: product, imgActive:product.imageURL[0],  message: 'producto encontrado'});
+
+            //Recomendados
+            const recomendados = await Product.paginate({"information.marca": product.information.marca}, {sort: '-createdAt', limit: 7})
+
+            recomendados.docs = recomendados.docs.filter(item => {
+                return item._id.toString() !== product._id.toString()
+            })
+
+            return res.json({err: null, data: product, imgActive:product.imageURL[0],  message: 'producto encontrado', recomendados});
+        
         }catch(err){return res.json({err: true, message: 'Algo salió mal al buscar producto'})}
     },
 

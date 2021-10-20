@@ -7,6 +7,7 @@ const Producto = () => {
 
     const { getProduct, product, getProducts, products } = useContext(ProductoContext);
     const [imgActive, setImgActive] = useState('');
+
     //Obtener Producto
     useEffect(() => {
         const productId = window.location.pathname.split(`/`)[2];
@@ -20,8 +21,9 @@ const Producto = () => {
         return {__html: description};
     }
 
-
     const load = 'https://i.stack.imgur.com/sEKwt.gif';
+
+    console.log(product)
 
     return (
         <React.Fragment>
@@ -82,10 +84,8 @@ const Producto = () => {
                             <div className="row relacionados">
                                 <div className="col-12">
                                     <Ofertas
-                                        title="Podria Interesarte"
-                                        products={products}
-                                        relId={product.data._id}
-                                        relMarca={product.data.information.marca}
+                                        title={`Porque visitaste ${product.data.information.marca}`}
+                                        products={product}
                                     />
                                 </div>    
                             </div>
