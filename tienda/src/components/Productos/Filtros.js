@@ -65,7 +65,7 @@ const Filtros = () => {
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <button className="dropdown-item" name="urban" onClick={handleFiltroStyle} type="button">Urban</button>
                         <button className="dropdown-item" name="casual" onClick={handleFiltroStyle} type="button">Casual</button>
-                        <button className="dropdown-item" name="deportiva" onClick={handleFiltroStyle} type="button">Deportiva</button>
+                        <button className="dropdown-item" name="running" onClick={handleFiltroStyle} type="button">Deportiva</button>
                     </div>
                 </div>
             </div>

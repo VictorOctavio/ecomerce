@@ -15,10 +15,10 @@ const Producto = () => {
         getProducts();
     }, [])
 
-    
+
     function createMarkup() {
         let description = product.data.description;
-        return {__html: description};
+        return { __html: description };
     }
 
     const load = 'https://i.stack.imgur.com/sEKwt.gif';
@@ -40,7 +40,7 @@ const Producto = () => {
                                             product.data.imageURL.map((image, i) => {
                                                 return (
                                                     <div className="card-image-muestra" onClick={() => setImgActive(image)} key={i}>
-                                                        <img src={image || load} alt={product.data.category}/>
+                                                        <img src={image || load} alt={product.data.category} />
                                                     </div>
                                                 )
                                             })
@@ -61,21 +61,30 @@ const Producto = () => {
                                     </div>
 
                                     <div className="informacion">
-                                        <h3
-                                            style={product.data.information.stock ? { color: 'rgb(101, 138, 28)' } : { color: 'red' }}
+                                        <h3 style={product.data.information.stock ? { color: 'rgb(101, 138, 28)' } : { color: 'red' }}
                                         >Stock: {product.data.information.stock ? 'Disponble' : 'Agotado'}</h3>
-                                        <h3>Marca: {product.data.information.marca}</h3>
-                                        <h3>Modelo: {product.data.information.model}</h3>
-                                        <h3>Talla: 41/42</h3>
-                                        <p style={{fontSize: '40px'}} className="display-4 mt-1">$ {product.data.price}</p>
+
+                                        <p style={{ fontSize: '40px' }} className="display-4 mt-1">$ {product.data.price}</p>
                                         <button className="btn btn-primary btn-lg btn-block">Comprar</button>
                                     </div>
 
                                 </div>
 
                                 <div className="col-12 col-lg-7 col-xl-8 decripcion-producto">
-                                    <h5>Descripción: </h5>
-                                    <div className="decription-zapatilla" dangerouslySetInnerHTML={createMarkup()}></div>
+                                    <h5>Descripción:</h5>
+
+                                    <div className="acerca-de-description">
+                                        <p className="m-0 description-title">Acerca de {product.data.title}: </p>
+                                        <ul>
+                                            <li><b>Marca:</b> {product.data.information.marca}</li>
+                                            <li><b>Modelo:</b> {product.data.information.model}</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div className="mas-inf-description">
+                                        <p className="m-0 description-title">Mas información: </p>
+                                        <div className="decription-zapatilla" dangerouslySetInnerHTML={createMarkup()}></div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -87,7 +96,7 @@ const Producto = () => {
                                         title={`Porque visitaste ${product.data.information.marca}`}
                                         products={product}
                                     />
-                                </div>    
+                                </div>
                             </div>
 
                         </div>

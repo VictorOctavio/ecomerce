@@ -20,7 +20,7 @@ const controller = {
 
             //Creamos objeto producto
             const product = new Product({
-                title, description, price, category: category, state: false, information: {marca, model, stock, 
+                title, description, price, category: category.toLowerCase(), state: false, information: {marca, model, stock, 
                 oferta: {active: false, priceSale: null}}
             });
 
@@ -113,12 +113,8 @@ const controller = {
                 }
 
                 //Productos Categoria
-                products = await Product.paginate({category: {$in: category}},  {page, limit, sort});
-
-                //Productos Marca
-                if(products.docs.length <= 0) products = await Product.paginate({"information.marca": {$in: category}}, {page, limit, sort});
-        
-
+                products = await Product.paginate({$or: [{category: category}, {"information.marca": category}]},  {page, limit, sort});
+                
                 // console.log(products)
                 return res.json({err: null, data: products, message: 'listado de productos encontrado con exito!'});
             }

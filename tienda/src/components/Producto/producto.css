@@ -88,18 +88,18 @@
 .decripcion-producto h5{
     font-size: 30px;
     border-bottom: 1px solid #ccc;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .decripcion-producto p{
-    text-align: justify;
     font-weight: 300;
     font-size: 18px;
 }
+.decripcion-producto .description-title{font-weight: 600; color: tomato;}
 
-.decription-zapatilla{
-    margin-top: 35px;
-}
+.decripcion-producto .acerca-de-description{margin-top: 20px;}
+.decripcion-producto .decription-zapatilla{margin-top: 5px;}
+.decripcion-producto .decription-zapatilla ul li, p{text-align: justify;}
 
 /* RELACIONADOS */
 .relacionados{
