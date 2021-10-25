@@ -13,7 +13,7 @@ const MainPage = () => {
     const {getProducts, products} = useContext(ProductoContext);
     
     useEffect(() => {
-        getProducts('', '', '', 6);
+        getProducts('', '', '', 12);
     }, []);
     
    

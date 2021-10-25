@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../../config';
 import './ofertas.css';
 
 
@@ -19,7 +20,7 @@ const Oferta = ({ title, products, data}) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 title-oferta">
-                            <h3>{title}</h3>
+                            <h3>{title}<a href={`${config.URL}/productos`}>  ver más</a></h3>
                         </div>
                     </div>
                     <div className="row ofertas">
@@ -34,7 +35,7 @@ const Oferta = ({ title, products, data}) => {
                                             <img className="card-img-top" src={item.imageURL[0]} alt="Cardimagcap" />
                                             <div className="card-body">
                                                 <h6>${item.price}</h6>
-                                                <h5>${item.information.oferta.priceSale}</h5>
+                                                <h4>${item.information.oferta.priceSale}</h4>
                                             </div>
 
                                             {
@@ -80,7 +81,7 @@ const Oferta = ({ title, products, data}) => {
                             ):<div className="mt-5">
                                 <h5 className="text-center" style={{fontWeight: 300}}>No tenemos similares</h5>
                                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                                    <button className="mt-1 mx-auto btn btn-warning">Ver otros</button>
+                                    <a href={`${config.URL}/productos`} className="mt-1 mx-auto btn btn-warning">Ver otros</a>
                                 </div>
                             </div>
                         )}

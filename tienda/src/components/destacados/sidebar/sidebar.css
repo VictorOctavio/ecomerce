@@ -1,7 +1,6 @@
 .container-sidebar{
-    margin-top: 12px;
     height: 78vh;
-    background-color: darkgoldenrod;
+    background-color: rgb(116, 84, 4);
 }
 
 .container-sidebar .photo-sidebar{

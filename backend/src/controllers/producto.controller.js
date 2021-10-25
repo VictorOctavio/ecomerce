@@ -20,7 +20,7 @@ const controller = {
 
             //Creamos objeto producto
             const product = new Product({
-                title, description, price, category: category.toLowerCase(), state: false, information: {marca, model, stock, 
+                title: title.toLowerCase(), description, price, category: category.toLowerCase(), state: false, information: {marca: marca.toLowerCase(), model, stock, 
                 oferta: {active: false, priceSale: null}}
             });
 
@@ -113,7 +113,7 @@ const controller = {
                 }
 
                 //Productos Categoria
-                products = await Product.paginate({$or: [{category: category}, {"information.marca": category}]},  {page, limit, sort});
+                products = await Product.paginate({$or: [{category}, {"information.marca": category}]},  {page, limit, sort});
                 
                 // console.log(products)
                 return res.json({err: null, data: products, message: 'listado de productos encontrado con exito!'});
@@ -129,9 +129,7 @@ const controller = {
     create_oferta: async(req, res) => {
         try{
             const {active, priceSale} = req.body;
-
-            console.log(typeof priceSale);
-
+            
             const update = await Product.findOneAndUpdate({_id: req.params.id}, {
                 "information.oferta.active": active,  "information.oferta.priceSale": parseInt(priceSale) || null
             }, {new: true});

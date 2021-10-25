@@ -84,17 +84,31 @@ const ProductoState = (props) => {
 
 
     const editProduct = async (product,description, products, setErr, setMessage) => {
+       
         dispath({ type: 'LOAGING' })
 
-        product.description = description.text;
+        const editProduct = {
+            id: product._id,
+            title: product.title,
+            price: product.price,
+            category: product.category,
+            description: description.text, 
+            information: {
+                stock: product.stock,
+                marca: product.marca,
+                model: product.model,
+                oferta: {
+                    active: product.information.oferta.active,
+                    priceSale:  product.information.oferta.priceSale
+                }
+            }
+        }
 
         try {
             const config = {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(product)
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(editProduct)
             }
             
             const res = await fetch(`${Config.URI}/update-product/${product.id}`, config);

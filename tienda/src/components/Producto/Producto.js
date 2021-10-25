@@ -21,9 +21,30 @@ const Producto = () => {
         return { __html: description };
     }
 
-    const load = 'https://i.stack.imgur.com/sEKwt.gif';
+    const handleComprar = async () => {
+        const buyProduct = {
+            title: product.data.title,
+            unit_price: product.data.price,
+            quantity: 1
+        }
 
-    console.log(product)
+        const conf = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(buyProduct)
+        }
+
+        const res = await fetch('http://localhost:8080/api/buy', conf);
+        const data = await res.json();
+        if (data.err) return alert('PERDON ALGO SALIO MAL');
+        else {
+            let win = window.open(data.redirect, '_blank');
+            return win.focus();
+        }
+        
+    }
+
+    const load = 'https://i.stack.imgur.com/sEKwt.gif';
 
     return (
         <React.Fragment>
@@ -65,7 +86,10 @@ const Producto = () => {
                                         >Stock: {product.data.information.stock ? 'Disponble' : 'Agotado'}</h3>
 
                                         <p style={{ fontSize: '40px' }} className="display-4 mt-1">$ {product.data.price}</p>
-                                        <button className="btn btn-primary btn-lg btn-block">Comprar</button>
+
+                                        <button className="btn btn-primary btn-lg btn-block"
+                                            onClick={handleComprar}
+                                        >Comprar</button>
                                     </div>
 
                                 </div>
@@ -80,7 +104,7 @@ const Producto = () => {
                                             <li><b>Modelo:</b> {product.data.information.model}</li>
                                         </ul>
                                     </div>
-                                    
+
                                     <div className="mas-inf-description">
                                         <p className="m-0 description-title">Mas información: </p>
                                         <div className="decription-zapatilla" dangerouslySetInnerHTML={createMarkup()}></div>
@@ -93,7 +117,7 @@ const Producto = () => {
                             <div className="row relacionados">
                                 <div className="col-12">
                                     <Ofertas
-                                        title={`Porque visitaste ${product.data.information.marca}`}
+                                        title={`Porque visitaste ${product.data.information.marca.toUpperCase()}`}
                                         products={product}
                                     />
                                 </div>

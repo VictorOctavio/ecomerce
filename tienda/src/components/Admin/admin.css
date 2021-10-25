@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center; 
     margin: 0;
-    display: flex;justify-content: center;align-items: center;   
 }
 
 .opciones-admin{
@@ -20,7 +19,7 @@
 
 .opciones-admin ul li{
     width: 100%;
-    margin: 0;
+    margin-bottom: 5px;
     font-weight: 400;
     font-size: 15px;
     letter-spacing: 1px;
@@ -29,16 +28,25 @@
 }
 
 .opciones-admin ul li:hover{
-    background-color: rgb(23, 18, 49);
+    background-color: rgb(76, 63, 139);
     color: #fff;
-    border: 2px solid rgb(6, 4, 17);
+    border: 1px solid rgb(160, 160, 160);
 }
 
 
 .opciones-container .admin-edit{
-    height: 80vh;
+    height: 95vh;
 }
 
+.form-zapatilla{
+    display: flex; flex-direction: column; align-items: center;
+    background-color: rgba(255, 99, 71, 0);
+}
+
+.acordeon-list{
+    height: 400px;
+    overflow: auto;
+}
 
 /**/
 form input, textarea{

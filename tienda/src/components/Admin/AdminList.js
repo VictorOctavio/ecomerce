@@ -9,6 +9,7 @@ const AdminList = ({ products, setEdit, setProduct, deleteProduct, setDescriptio
 
     const handleEdit = (product) => {
         setEdit(true);
+        console.log(product);
 
         setProduct({
             id: product._id,
@@ -16,9 +17,10 @@ const AdminList = ({ products, setEdit, setProduct, deleteProduct, setDescriptio
             price: product.price,
             category: product.category,
             description: product.description,
+            marca: product.information.marca,
+            model: product.information.model,
+            stock: product.information.stock,
             information: {
-                marca: product.information.marca,
-                model: product.information.model,
                 oferta: {
                     active: product.information.oferta.active,
                     priceSale:  product.information.oferta.priceSale
@@ -27,7 +29,6 @@ const AdminList = ({ products, setEdit, setProduct, deleteProduct, setDescriptio
         })
 
         setDescription({text: product.description})
-
     }
     
     return (
