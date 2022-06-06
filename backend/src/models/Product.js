@@ -12,6 +12,8 @@ const productSchema = Schema({
         marca: String,
         model: String,
         stock: Boolean,
+        numStock: Number,
+        tallas: Array,
         oferta: {
             priceSale: Number,
             active: Boolean

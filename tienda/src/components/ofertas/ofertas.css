@@ -1,7 +1,9 @@
 .container-ofertas{
-    margin: 100px 0;
+    margin: 0;
+    margin-top: 120px;
 }
 
+.container-ofertas-wrapper{position: relative;}
 .title-oferta h3{
     color: rgb(129, 129, 129);
     font-size: 30px;
@@ -10,18 +12,31 @@
     border-bottom: 1px solid rgb(206, 206, 206);
     margin-bottom: 25px;
     font-weight: 300;
-    text-align: center;
 }
 .title-oferta h3 a{
     text-decoration: none;
     font-size: 14px;
 }
 
+.container-ofertas-wrapper .btnMoveScroll{
+    position: absolute;
+    top: 50%;
+    opacity: .5;
+}
+
+.container-ofertas-wrapper .btnMoveScroll.left{left: .3%;}
+.container-ofertas-wrapper .btnMoveScroll.right{right: .3%;}
+
+.container-ofertas-wrapper .btnMoveScroll:hover{
+    opacity: 1;
+}
+
 
 .ofertas{
     display: flex;
     flex-wrap: nowrap;
-    overflow: auto;
+    overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 
@@ -72,23 +87,68 @@
     align-items: center;
     position: absolute;
     color: rgb(150, 150, 150);
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+
+.hover-active.active{
+    opacity: 1;
 }
 
 
 .hover-active strong{
     text-align: center;
     text-transform: uppercase;
+    color: rgb(233, 49, 17);
 }
 
 .hover-active-border{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 99%;
-    width: 99%;
+    height: 100%;
+    width: 100%;
 }
 
 .hover-active p{ 
     text-align: center;
     text-transform: capitalize;
+}
+
+/* *ANIMACION */
+.boderColorAnimation{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boderColorAnimationLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 60%;
+    border: 1px solid #202020;
+    border-radius: 50%;
+    margin: auto;
+    animation: colorBorder 2s ease;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+.boderColorAnimationLineColor{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 1px solid #202020;
+}
+
+@keyframes colorBorder {
+    0%{}
+    25%{}
+    50%{}
+    75%{}
+    100%{}
 }

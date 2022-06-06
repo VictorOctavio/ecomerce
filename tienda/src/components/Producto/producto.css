@@ -1,6 +1,7 @@
 .producto-container{
     min-height:60vh;
     margin-top: 150px;
+    margin-bottom: 150px;
 }
 
 .producto-muestra{
@@ -79,6 +80,28 @@
     margin-bottom: 5px;
 }
 
+.informacion-producto .informacion .selects{
+    display: flex;
+    justify-content: space-between;
+}
+
+.informacion-producto .informacion .select-cantidad, 
+.informacion-producto .informacion .select-talla{
+    position: relative;
+    width: 49%;
+}
+
+.informacion-producto .informacion .form-select{
+    padding-top: 15px;
+}
+
+.informacion-producto .informacion .selectTitle{
+    position: absolute;
+    top: 8%;
+    left: 6%;
+    font-size: 11px;
+    color: rgb(185, 185, 185);
+}
 
 /* DESCRIPTION PRODUCT */
 .decripcion-producto{
@@ -103,11 +126,10 @@
 
 /* RELACIONADOS */
 .relacionados{
-    margin-top: -100PX;
+    margin-top: 100px;
 }
 
-@media (max-width: 960px) {
-    
+@media (max-width: 990px) {
 
     .producto-muestra .producto-images{
         display: flex;

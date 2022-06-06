@@ -1,7 +1,7 @@
 .opciones-container{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center; 
     margin: 0;
 }
@@ -10,14 +10,18 @@
     background-color: rgb(23, 18, 49);
     min-height: 100vh;
     height: auto;
+    padding: 50px 5px; 
 }
 
+.opciones-admin .opcionesAdminTitle{
+    text-align: center; font-weight: 800; color: white;
+}
 
 .opciones-admin ul{
-   padding: 50px 0;
+   padding: 10px 0;
 }
 
-.opciones-admin ul li{
+.opciones-admin ul .opciones-item{
     width: 100%;
     margin-bottom: 5px;
     font-weight: 400;
@@ -27,36 +31,7 @@
     transition: .3s;
 }
 
-.opciones-admin ul li:hover{
+.opciones-admin ul .opciones-item:hover{
     background-color: rgb(76, 63, 139);
     color: #fff;
-    border: 1px solid rgb(160, 160, 160);
-}
-
-
-.opciones-container .admin-edit{
-    height: 95vh;
-}
-
-.form-zapatilla{
-    display: flex; flex-direction: column; align-items: center;
-    background-color: rgba(255, 99, 71, 0);
-}
-
-.acordeon-list{
-    height: 400px;
-    overflow: auto;
-}
-
-/**/
-form input, textarea{
-    margin-bottom: 10px;
-}
-
-form textarea{
-    max-height: 350px;
-}
-
-form button{
-    width: 100%;
 }

@@ -25,6 +25,7 @@ app.use((req, res, next) => {
 app.use('/api', require('./routes/producto.routes'));
 app.use('/api', require('./routes/app.routes'));
 app.use('/api', require('./routes/buy.routes'));
+app.use('/api', require('./routes/admin.routes'));
 
 //Export module
 module.exports = app;

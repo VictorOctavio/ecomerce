@@ -10,11 +10,13 @@ const ProductoState = (props) => {
     const dataIncial = {
         products: [],
         product: null,
-        loading: false
+        loading: false,
+        miCarrito: []
     }
 
     //Reducer
     const [state, dispath] = useReducer(ProductoReducer, dataIncial);
+
 
     //actions
     const getProducts = async (sort, category, page, limit) => {
@@ -39,7 +41,7 @@ const ProductoState = (props) => {
         try {
 
             const res = await axios.get(`http://localhost:8080/api/product/${id}`);
-            
+
             console.log(res);
             dispath({
                 type: 'GET_PRODUCT',
@@ -74,17 +76,16 @@ const ProductoState = (props) => {
             const res = await fetch(`${Config.URI}/saved-product`, config);
             const data = await res.json();
 
-            if(data.err) return setErr({text: data.message, active: true});
+            if (data.err) return setErr({ text: data.message, active: true });
 
-            setMessage({text: data.message, active: true});
+            setMessage({ text: data.message, active: true });
 
         } catch (err) { console.log(err) }
     };
 
 
+    const editProduct = async (product, description, products, setErr, setMessage) => {
 
-    const editProduct = async (product,description, products, setErr, setMessage) => {
-       
         dispath({ type: 'LOAGING' })
 
         const editProduct = {
@@ -92,14 +93,15 @@ const ProductoState = (props) => {
             title: product.title,
             price: product.price,
             category: product.category,
-            description: description.text, 
+            description: description.text,
             information: {
                 stock: product.stock,
                 marca: product.marca,
                 model: product.model,
+                tallas: product.tallas,
                 oferta: {
                     active: product.information.oferta.active,
-                    priceSale:  product.information.oferta.priceSale
+                    priceSale: product.information.oferta.priceSale
                 }
             }
         }
@@ -110,17 +112,16 @@ const ProductoState = (props) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editProduct)
             }
-            
+
             const res = await fetch(`${Config.URI}/update-product/${product.id}`, config);
             const data = await res.json();
-          
-            if(data.err) return setErr({text: data.message, active: true});
 
-            setMessage({text: data.message, active: true})
+            if (data.err) return setErr({ text: data.message, active: true });
+
+            setMessage({ text: data.message, active: true })
 
         } catch (err) { console.log(err) }
     };
-
 
 
     const deleteProduct = async (id, products) => {
@@ -131,7 +132,7 @@ const ProductoState = (props) => {
             const res = await axios.delete(`${Config.URI}/deleted-product/${id}`);
             console.log(res.data.data);
 
-            if(res.data.err) return console.log('error');
+            if (res.data.err) return console.log('error');
 
             const arrayFilter = products.docs.filter(item => item._id !== id);
             products.docs = arrayFilter;
@@ -145,12 +146,34 @@ const ProductoState = (props) => {
     }
 
 
+    const addItemCarritoCompras = (product) => {
+
+        // Existe en local storage carrito de compra
+        if (localStorage.getItem('mi-carrito')) {
+            let carrito = JSON.parse(localStorage.getItem('mi-carrito'));
+
+            const findProduct = carrito.find(item => item._id === product._id) || null;
+
+            if (!findProduct) carrito.push(product);
+            else carrito = carrito.filter(item => item._id !== product._id);
+
+            localStorage.setItem('mi-carrito', JSON.stringify(carrito));
+        } else {
+            const carrito = [];
+            product.catindad = 1;
+            carrito.push(product);
+            localStorage.setItem('mi-carrito', JSON.stringify(carrito))
+        }
+
+
+    }
+
     return (
         <ProductContext.Provider value={{
             products: state.products,
             product: state.product,
             loading: state.loading,
-            getProducts, getProduct, saveProduct, editProduct, deleteProduct
+            getProducts, getProduct, saveProduct, editProduct, deleteProduct, addItemCarritoCompras
         }}>
             {props.children}
         </ProductContext.Provider>

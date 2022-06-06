@@ -1,34 +1,19 @@
-import React, { useState } from 'react';
+import React from "react";
 import './admin.css';
 
-//compoenets
-import AdminForm from './AdminForm';
-import {AdminInfo} from './AdminInfo';
+import { Link } from 'react-router-dom';
 
-const Admin = ({ products }) => {
-    
-    const [navState, setNavState] = useState('form')
-    const changeState = (navActive) => {setNavState(navActive)}
+const Admin = () => {
 
     return (
-        <React.Fragment>
-            <div className="row opciones-container">
-
-                <div className="col-12 col-xs-4 col-md-3 col-lg-2 opciones-admin">
-                    <h3 className="text-center mt-2" style={{ color: '#ffff' }}>ADMIN</h3>
-                    <ul className="list-group">
-                        <li className="list-group-item" onClick={() => changeState('form')}>CREATE/UPDATE</li>
-                        <li className="list-group-item" onClick={() => changeState('info')}>INFO/MARKET</li>
-                    </ul>
-                </div>
-
-
-                <div className="col-12 col-xs-8 col-md-9 col-lg-10 admin-edit">
-                    {navState == 'form' && <AdminForm products={products} />}
-                    {navState == 'info' && <AdminInfo products={products} />}
-                </div>
+        <div className="row opciones-container">
+            <div className="opciones-admin">
+                <h3 className="opcionesAdminTitle">ADMIN</h3>
+                <ul className="list-group">
+                    <Link to="/admin" className="opciones-item list-group-item">CREATE/UPDATE</Link>
+                </ul>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 

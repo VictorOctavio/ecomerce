@@ -5,7 +5,7 @@ import './producto.css';
 
 const Producto = () => {
 
-    const { getProduct, product, getProducts, products } = useContext(ProductoContext);
+    const { getProduct, product, getProducts } = useContext(ProductoContext);
     const [imgActive, setImgActive] = useState('');
 
     //Obtener Producto
@@ -22,10 +22,12 @@ const Producto = () => {
     }
 
     const handleComprar = async () => {
+
         const buyProduct = {
             title: product.data.title,
             unit_price: product.data.price,
-            quantity: 1
+            quantity: product.data.quantity || 1,
+            description: `talla: ${product.data.talla || product.data.information.tallas[0]}`
         }
 
         const conf = {
@@ -38,10 +40,10 @@ const Producto = () => {
         const data = await res.json();
         if (data.err) return alert('PERDON ALGO SALIO MAL');
         else {
-            let win = window.open(data.redirect, '_blank');
-            return win.focus();
+           window.open(data.redirect, '_blank');
         }
-        
+
+
     }
 
     const load = 'https://i.stack.imgur.com/sEKwt.gif';
@@ -72,7 +74,6 @@ const Producto = () => {
                                     <div className="col-12 col-lg-11 image-active">
                                         <img src={imgActive || product.imgActive} alt={product.data.description} />
                                     </div>
-
                                 </div>
 
                                 <div className="col-12 col-lg-5 col-xl-4 informacion-producto">
@@ -82,13 +83,36 @@ const Producto = () => {
                                     </div>
 
                                     <div className="informacion">
-                                        <h3 style={product.data.information.stock ? { color: 'rgb(101, 138, 28)' } : { color: 'red' }}
-                                        >Stock: {product.data.information.stock ? 'Disponble' : 'Agotado'}</h3>
 
-                                        <p style={{ fontSize: '40px' }} className="display-4 mt-1">$ {product.data.price}</p>
+                                        <h3 style={product.data.information.stock ? { color: 'rgb(101, 138, 28)' } : { color: 'red' }}
+                                        >{product.data.information.stock ? 'En stock' : 'Agotado'}</h3>
+
+                                        <p style={{ fontSize: '40px' }} className="display-4 mb-2">$ {product.data.price}</p>
+
+                                        <div className='selects'>
+                                            <div className='select-cantidad'>
+                                                <select className='form-select mb-2' onChange={(e)=>product.data.quantity = parseInt(e.target.value)}>
+                                                    <option className="form-select-option" value="1">1</option>
+                                                    <option className="form-select-option" value="2">2</option>
+                                                    <option className="form-select-option" value="3">3</option>
+                                                    <option className="form-select-option" value="5">4</option>
+                                                </select>
+                                                <strong className='selectTitle'>CANTIDAD</strong>
+                                            </div>
+
+                                            <div className='select-talla'>
+                                                <select className='form-select mb-2' onChange={e=> product.data.talla = e.target.value}>
+                                                    {product.data.information.tallas.map(talle => (
+                                                        <option value={talle} key={talle} className="form-select-option">{talle}</option>
+                                                    ))}
+                                                </select>
+                                                <strong className='selectTitle'>TALLA</strong>
+                                            </div>
+                                        </div>
 
                                         <button className="btn btn-primary btn-lg btn-block"
                                             onClick={handleComprar}
+                                            disabled={!product.data.information.stock}
                                         >Comprar</button>
                                     </div>
 
@@ -114,13 +138,11 @@ const Producto = () => {
                             </div>
 
 
-                            <div className="row relacionados">
-                                <div className="col-12">
-                                    <Ofertas
-                                        title={`Porque visitaste ${product.data.information.marca.toUpperCase()}`}
-                                        products={product}
-                                    />
-                                </div>
+                            <div className="relacionados">
+                                <Ofertas
+                                    title={`Porque visitaste ${product.data.information.marca.toUpperCase()}`}
+                                    products={product}
+                                />
                             </div>
 
                         </div>

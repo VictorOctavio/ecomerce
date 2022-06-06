@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './slider.css';
 
 //React icons
-import {HiChevronDoubleDown} from 'react-icons/hi';
+import { HiChevronDoubleDown } from 'react-icons/hi';
 
 const Slider = () => {
-    return(
+    return (
         <React.Fragment>
             <section className="slider-contaiener">
                 <div className="slider">
@@ -16,7 +16,7 @@ const Slider = () => {
                 </div>
 
                 <div className="icons-down">
-                    <HiChevronDoubleDown className="arrow"/>
+                    <HiChevronDoubleDown className="arrow" />
                 </div>
             </section>
         </React.Fragment>

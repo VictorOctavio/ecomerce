@@ -9,6 +9,9 @@ const controller = {
 
     buyProducts: async (req, res) => {
         try {
+            //Data del body
+            // const {unit_price, title, quantity, description} = req.body;
+
             // Crea un objeto de preferencia
             let preference = {
                 items: [req.body],
@@ -20,7 +23,7 @@ const controller = {
             };
             
             const mp = await mercadopago.preferences.create(preference);
-            return res.json({ err: null, redirect: mp.body.init_point });
+            return res.json({ err: null, redirect: mp.body.init_point, mp });
 
         } catch (err) { return res.json({ err: true, message: err }) }
     }

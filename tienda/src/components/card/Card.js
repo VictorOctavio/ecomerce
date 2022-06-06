@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdLocalOffer } from 'react-icons/md'
 import './card.css';
 
+import ContextProducto from '../../context/Producto/productoContext';
+
+// React icons
+import { MdAddShoppingCart } from 'react-icons/md';
 
 const Card = ({ product }) => {
 
@@ -10,6 +14,10 @@ const Card = ({ product }) => {
     }
 
     const load = 'https://i.stack.imgur.com/sEKwt.gif'
+
+    const { addItemCarritoCompras } = useContext(ContextProducto)
+
+    const handleCarrito = () => addItemCarritoCompras(product);
 
     return (
         <React.Fragment>
@@ -22,11 +30,13 @@ const Card = ({ product }) => {
                 <div className="card-body card-body-product">
                     <strong className="mb-0">{product.title.toUpperCase()}</strong>
                     <div className="precio-card">
-                        <h6>{product.category.toUpperCase()}</h6>
+                        <h6
+                            onClick={handleCarrito}
+                        >{product.category.toUpperCase()} <MdAddShoppingCart className='btnCart' title={`add ${product.title} al carrito`} /> </h6>
                         {
                             product.information.oferta.active ? (
-                            <p>${product.information.oferta.priceSale}</p>
-                        ):  <p>${product.price}</p>
+                                <p>${product.information.oferta.priceSale}</p>
+                            ) : <p>${product.price}</p>
                         }
                     </div>
                 </div>

@@ -10,6 +10,10 @@
     transform: translateY(-15px);
     z-index: 2;
 }
+.card-product:hover .card-body-product .precio-card h6 .btnCart{
+    opacity: 1;
+}
+
 
 .card-product .card-product-img{
     width: 100%;
@@ -49,8 +53,23 @@
     color: tomato;
     margin: 0;
     padding-bottom: 5PX;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
 }
 
+.card-product .card-body-product .precio-card h6 .btnCart{
+    font-size: 25px;
+    cursor: pointer;
+    transition: .3s ease-out;
+    color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+}
+.card-product .card-body-product .precio-card h6 .btnCart:hover{
+    color: rgba(0, 0, 0, 0.285);
+}
+
+    
 .card-product .card-body-product .precio-card p{
     font-size: 23px;
     font-weight: 300;

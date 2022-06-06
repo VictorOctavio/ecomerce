@@ -1,0 +1,30 @@
+.new-product-container{
+    display: flex;
+    flex-direction: column;
+    padding: 45px;
+}
+
+.form-zapatilla-container{
+    display: flex;
+    gap: 20px;
+}
+
+.form-zapatilla-title{ font-weight: 800; color: rgb(151, 151, 151);}
+
+.formZapatilla input{
+    margin-bottom: 10px;
+}
+
+.formZapatilla button{
+    width: 100%;
+} 
+
+.formZapatilla .formZapatillaBtn{
+    background-color: rgb(23, 18, 49);
+    color: #fff;
+}
+
+.acordeon-list{
+    max-height: 100vh;
+    overflow: auto;
+}

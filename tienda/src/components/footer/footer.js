@@ -3,7 +3,6 @@ import Config from '../../config';
 import './footer.css';
 import {FiSend} from 'react-icons/fi';
 
-const link = 'https://web.whatsapp.com/'
 const Footer = () => {
 
     const dataMarcas = [
@@ -47,7 +46,7 @@ const Footer = () => {
                         <h6 className="text-uppercase font-weight-bold mb-4">MARCAS POPULARES</h6>
                         <ul className="list-unstyled mb-0">
                             {dataMarcas.map(marca=>(
-                                <li className="mb-2"><a href={`${Config.URL}/productos/${marca.title}`} className="text-muted">{marca.title}</a></li>
+                                <li key={marca.title} className="mb-2"><a href={`${Config.URL}/productos/${marca.title}`} className="text-muted">{marca.title}</a></li>
                             ))}
                         </ul>
                     </div>

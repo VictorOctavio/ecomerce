@@ -15,7 +15,6 @@ const MainPage = () => {
     useEffect(() => {
         getProducts('', '', '', 12);
     }, []);
-    
    
     return(
        <React.Fragment>

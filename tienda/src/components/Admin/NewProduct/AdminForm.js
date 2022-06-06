@@ -1,19 +1,19 @@
 import React, { useContext } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import ProductContext from '../../context/Producto/productoContext';
-import './admin.css';
-import AdminList from './AdminList';
-import Config from '../../config';
+import ProductContext from '../../../context/Producto/productoContext';
+import AdminList from '../AdminList';
+import Config from '../../../config';
 import { Alert } from 'react-bootstrap';
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im';
+import './adminform.css';
 
 const AdminForm = ({ products }) => {
 
     //Context
     const { saveProduct, editProduct, deleteProduct } = useContext(ProductContext);
 
-    const [product, setProduct] = React.useState({ title: '', price: '', category: '', model: '', marca: '', stock: true })
+    const [product, setProduct] = React.useState({ title: '', price: '', category: '', model: '', marca: '', tallas: '', stock: true })
     const [oferta, setOferta] = React.useState({ active: false, priceSale: 0 });
     const [images, setImages] = React.useState(null);
     const [description, setDescription] = React.useState({ text: '' })
@@ -29,9 +29,7 @@ const AdminForm = ({ products }) => {
         })
     }
 
-    const handleChangeDescription = (value) => {
-        setDescription({ text: value })
-    }
+    const handleChangeDescription = (value) => setDescription({ text: value })
 
     const handleImages = e => setImages(e.target.files);
 
@@ -48,7 +46,7 @@ const AdminForm = ({ products }) => {
         let update;
         if (e.target.name === 'active') update = { active: true, priceSale: oferta.priceSale }
         else update = { active: false, priceSale: null }
-        
+
 
         const config = {
             method: 'PUT',
@@ -67,41 +65,41 @@ const AdminForm = ({ products }) => {
 
 
     return (
-        <React.Fragment>
-            <div className="form-zapatilla">
-                <h2>{edit ? `Editar ${product.title}` : 'Agregar Nuevo'}</h2>
-                <form onSubmit={handleSubmit} className="col-lg-6 col-12">
-                    {message.active && (
-                        <Alert variant="success">
-                            {message.text.toUpperCase()}
-                        </Alert>
-                    )}
-                    {err.active && (
-                        <Alert variant="danger">
-                            {err.text.toUpperCase()}
-                        </Alert>
-                    )}
-                    <input className="form-control" name="title" placeholder="Titulo"
+        <div className="new-product-container">
+            
+            <h2 className="form-zapatilla-title col-12">{edit ? `Editar ${product.title}` : 'Agregar Nuevo'}</h2>
+            <div className="form-zapatilla-container col-12">
+                <form onSubmit={handleSubmit} className="formZapatilla col-6">
+
+                    {message.active && <Alert variant="success"> {message.text.toUpperCase()} </Alert>}
+
+                    {err.active && <Alert variant="danger"> {err.text.toUpperCase()} </Alert>}
+
+                    <input className="form-control" name="title" placeholder="Agrega Titulo:"
                         onChange={handleChange} value={product.title}
                     />
 
-                    <input className="form-control" name="price" placeholder="Precio" type="number"
+                    <input className="form-control" name="price" placeholder="Agrega Precio:" type="number"
                         onChange={handleChange} value={product.price}
                     />
 
-                    <input className="form-control" name="category" placeholder="Categoria"
+                    <input className="form-control" name="category" placeholder="Categoria:"
                         onChange={handleChange} value={product.category}
                     />
 
-                    <ReactQuill value={description.text} onChange={handleChangeDescription} className="my-2" />
+                    <ReactQuill className="descipcionZapatilla" value={description.text} onChange={handleChangeDescription} className="my-2" />
 
-                    <input className="form-control" name="marca" placeholder="Marca"
+                    <input className="form-control" name="marca" placeholder="Marca:"
                         onChange={handleChange} value={product.marca}
                     />
-                    <input className="form-control" name="model" placeholder="Modelo"
+                    <input className="form-control" name="model" placeholder="Modelo:"
                         onChange={handleChange} value={product.model}
                     />
-
+                    
+                    <input className="form-control" name="tallas" placeholder="Tallas:"
+                        onChange={handleChange} value={product.tallas}
+                    />
+                    
                     {
                         !edit ? (
                             <input className="form-control" multiple placeholder="Titulo" type="file"
@@ -123,27 +121,27 @@ const AdminForm = ({ products }) => {
 
                     {edit && (
                         <button type="button" style={{ width: 'auto' }} className="btn btn-secondary mx-1"
-                        onClick={() => setProduct({...product, stock: !product.stock})}
+                            onClick={() => setProduct({ ...product, stock: !product.stock })}
                         >Stock:  {!product.stock ? <ImCheckboxUnchecked /> : <ImCheckboxChecked />}</button>
                     )}
 
-                    <button className="btn btn-block btn-primary my-2">{edit ? 'Editar' : 'Subir Producto'}</button>
-
+                    <button className="btn btn-block my-2 formZapatillaBtn">{edit ? 'Editar' : 'Subir Producto'}</button>
 
                 </form>
-            </div>
 
+                <div className="acordeon-list col-6">
+                    <AdminList
+                        products={products}
+                        setEdit={setEdit}
+                        setProduct={setProduct}
+                        deleteProduct={deleteProduct}
+                        setDescription={setDescription}
+                    />
+                </div>
 
-            <div className="col-12 mt-5 acordeon-list">
-                <AdminList
-                    products={products}
-                    setEdit={setEdit}
-                    setProduct={setProduct}
-                    deleteProduct={deleteProduct}
-                    setDescription={setDescription}
-                />
             </div>
-        </React.Fragment>
+            
+        </div>
     )
 }
 
